@@ -3,35 +3,56 @@ from django.shortcuts import render, HttpResponse
 import datetime
 from django.shortcuts import redirect
 from .models import Presenca 
+from django import forms
+from django.forms import ModelForm
 
 
-data = datetime.date.today()
+
+
+
+
 
 #função para consultar
-def index(request):
-    lista=[]
-    context={'lista':lista}
-    lista=Presenca.objects.all()
+#def index(request):
+ #   lista=[]
+  #  context={'lista':lista}
+   # lista=Presenca.objects.all()
     
-    for item in lista:
-        if item.data == data:
-            context['lista'].append(item)
+    #for item in lista:
+     #   context['lista'].append(item)
             
-    return render(request,'index.html', context)
+    #return render(request,'index.html', context)
+from .models import AtividadeModel
+
+def consultar(request):
+    lista = AtividadeModel.objects.all()
+    context = {'lista': lista}
+    
+    return render(request, 'index.html', context)
+
 
 
 #função para cadastrar atividade
+class PresencaForm(ModelForm):
+    class Meta:
+        model = Presenca
+        fields = ['nomealuno', 'nomeprofessor']
+
 def cadastro(request):
     if request.method == 'POST':
 
-        form = Presenca(request.POST)
+        form = PresencaForm(request.POST)
+
 
         if form.is_valid():
-            nomealuno=form.data['nome']
-            nomeaprofessor=form.data['nome']
+            nomealuno = form.cleaned_data['nomealuno']
+            nomeprofessor = form.cleaned_data['nomeprofessor']
+
 
             form.save()
+            
             return index(request)
+                 
         return HttpResponse('Erro de cadastro')
     else:
 

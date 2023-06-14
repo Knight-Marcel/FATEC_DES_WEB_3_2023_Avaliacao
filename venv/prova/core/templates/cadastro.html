@@ -28,22 +28,23 @@
 </head>
     <body>
         <div class="container">
-            <form action="{% url 'cadastro' %}"method="POST"> 
+            <form action="{% url 'cadastro' %}" method="POST"> 
                 {% csrf_token %} 
                 <h3>Cadastro de Presença</h3>
                 <br></br>
                 <label>Nome do Aluno </label><br>
-                <input type="text" name="nome"><br>
+                <input type="text" name="nomealuno"><br>
                 <label class="form-label">Selecione o Professor</label><br>
-                <select class="form-select">
-                <option selected value="orlando">Orlando</option>
-                <option value="leonardo">Leonardo</option>
-                <option value="nilton">Nilton</option>
-                <option value="jonas">Jonas</option>
+                <select class="form-select" name="nomeprofessor">
+                    <option selected value="orlando">Orlando</option>
+                    <option value="leonardo">Leonardo</option>
+                    <option value="nilton">Nilton</option>
+                    <option value="jonas">Jonas</option>
                 </select>
                 <br>
                 <input id="botao" type="submit" value="Cadastro">
             </form>
         <div>
+        
     </body>
 </html>

@@ -6,39 +6,11 @@
         <title>Listar Presenças</title>
     </head>
     <body>
-        </br>
-        
-        <div class="container">
-        {% if lista %}
-
-            <h1 class="text-center">"Quem Estava no Evento"</h1>
-            <br><br>
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Alunos:</th>
-                    
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in lista %}                              
-
-                        <th scope="row">{{item.id}}</th>
-                            <td>{{ item.nome }}</td>
-                         
-                        </tr>   
-
-                    {% endfor %}               
-                </tbody>
-            </table>
-
-        {% else %}
-
-            <h1>Nenhuma preseça contabilizada</h1>
-
-        {% endif %}
-        </div>        
-    </br>
+        <h1>Lista de Atividades</h1>
+        <ul>
+        {% for item in lista %}
+            <li>{{ item.nome }}</li>
+        {% endfor %}
+        </ul>
     </body>
 </html>
