@@ -36,7 +36,7 @@ def cadastro(request):
     else:
 
         contexto = {'form': Presenca() }    
-        return render(request,'index.html', contexto)
+        return render(request,'cadastro.html', contexto)
 
 from django.shortcuts import get_object_or_404, redirect
 
