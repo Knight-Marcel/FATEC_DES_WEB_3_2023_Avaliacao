@@ -13,22 +13,20 @@ from django.forms import ModelForm
 
 
 #função para consultar
-#def index(request):
- #   lista=[]
-  #  context={'lista':lista}
-   # lista=Presenca.objects.all()
+def index(request):
+    lista = []
+    presencas = Presenca.objects.all()
     
-    #for item in lista:
-     #   context['lista'].append(item)
+    for presenca in presencas:
+        item = {
+            'nomealuno': presenca.nomealuno,
+            'nomeprofessor': presenca.nomeprofessor
+        }
+        lista.append(item)
             
-    #return render(request,'index.html', context)
-from .models import AtividadeModel
-
-def consultar(request):
-    lista = AtividadeModel.objects.all()
     context = {'lista': lista}
-    
     return render(request, 'index.html', context)
+
 
 
 
