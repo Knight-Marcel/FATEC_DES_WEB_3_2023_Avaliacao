@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render, HttpResponse
 import datetime
 from django.shortcuts import redirect
+from .models import Presenca 
+
 
 data = datetime.date.today()
 

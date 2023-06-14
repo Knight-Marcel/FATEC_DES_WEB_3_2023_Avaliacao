@@ -6,3 +6,5 @@ class Presenca(TestCase):
         self.assertEqual(200, self.resp.status_code)
     def test_texto(self):
         self.assertContains(self.resp, 'index')
+    def test_template_natal(self):
+        self.assertTemplateUsed(self.resp, 'cadastro.html')    
